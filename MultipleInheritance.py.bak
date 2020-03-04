@@ -63,12 +63,9 @@ class AudioBook(Book, SoundTrack):
         Book.__init__(self, id, title, author, isbn)
         SoundTrack.__init__(self, id, title, singer, year)
 
-    def print_info(self):
-        Book.print_info(self)
-        SoundTrack.print_info(self)
-
 
 ab1 = AudioBook(54, "Happy Farmer", "Sandy", "333-47538745", "Sally", 2010)
+print(AudioBook.mro())
 # ab1.read()
 # ab1.play()
 ab1.print_info()
