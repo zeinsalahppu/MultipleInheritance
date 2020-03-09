@@ -1,6 +1,7 @@
 
 class LibraryItem:
     def __init__(self, id, title):
+        print("Initializing LibraryItem")
         self.id = id
         self.title = title
 
@@ -16,12 +17,13 @@ class LibraryItem:
 
 class Book(LibraryItem):
     def __init__(self, id, title, author, isbn):
+        print("Initializing Book")
         LibraryItem.__init__(self, id, title)
         self.author = author
         self.isbn = isbn
 
     def print_info(self):
-        super().print_info()
+        LibraryItem.print_info(self)
         print("-------- Book Details --------")
         print("Author: " + self.author)
         print("ISBN: " + str(self.isbn))
@@ -37,11 +39,12 @@ class Book(LibraryItem):
 class SoundTrack(LibraryItem):
     def __init__(self, id, title, singer, year):
         LibraryItem.__init__(self, id, title)
+        print("Initializing SoundTrack")
         self.singer = singer
         self.year = year
 
     def print_info(self):
-        super().print_info()
+        LibraryItem.print_info(self)
         print("-------- Sound Track Details --------")
         print("Artist: " + self.singer)
         print("Production Year: " + str(self.year))
@@ -56,13 +59,13 @@ class SoundTrack(LibraryItem):
 
 class AudioBook(Book, SoundTrack):
     def __init__(self, id, title,  author, isbn, singer, year):
+        print("Initializing AudioBook")
         Book.__init__(self, id, title, author, isbn)
         SoundTrack.__init__(self, id, title, singer, year)
-
-    def print_info(self):
-        super().print_info()
 
 
 ab1 = AudioBook(54, "Happy Farmer", "Sandy", "333-47538745", "Sally", 2010)
 print(AudioBook.mro())
+# ab1.read()
+# ab1.play()
 ab1.print_info()
