@@ -1,9 +1,9 @@
 
 class LibraryItem:
-    def __init__(self, id, title):
+    def __init__(self, **kwargs):
         print("Initializing LibraryItem")
-        self.id = id
-        self.title = title
+        self.id = kwargs["id"]
+        self.title = kwargs["title"]
 
     def print_info(self):
         print("-------- Library Item Details --------")
@@ -16,11 +16,11 @@ class LibraryItem:
 
 
 class Book(LibraryItem):
-    def __init__(self, id, title, author, isbn):
+    def __init__(self, **kwargs):
         print("Initializing Book")
-        LibraryItem.__init__(self, id, title)
-        self.author = author
-        self.isbn = isbn
+        super().__init__(**kwargs)
+        self.author = kwargs["author"]
+        self.isbn = kwargs["isbn"]
 
     def print_info(self):
         super().print_info()
@@ -37,11 +37,11 @@ class Book(LibraryItem):
 
 
 class SoundTrack(LibraryItem):
-    def __init__(self, id, title, singer, year):
+    def __init__(self, **kwargs):
         print("Initializing SoundTrack")
-        LibraryItem.__init__(self, id, title)
-        self.singer = singer
-        self.year = year
+        super().__init__(**kwargs)
+        self.singer = kwargs["singer"]
+        self.year = kwargs["year"]
 
     def print_info(self):
         super().print_info()
@@ -60,8 +60,7 @@ class SoundTrack(LibraryItem):
 class AudioBook(Book, SoundTrack):
     def __init__(self, id, title,  author, isbn, singer, year):
         print("Initializing AudioBook")
-        Book.__init__(self, id, title, author, isbn)
-        SoundTrack.__init__(self, id, title, singer, year)
+        super().__init__(id=id, title=title, author=author, isbn=isbn, singer=singer, year=year)
 
     def print_info(self):
         super().print_info()
