@@ -2,8 +2,8 @@
 class LibraryItem:
     def __init__(self, **kwargs):
         print("Initializing LibraryItem")
-        self.id = kwargs["id"]
-        self.title = kwargs["title"]
+        self.id = kwargs.pop("id")
+        self.title = kwargs.pop("title")
 
     def print_info(self):
         print("-------- Library Item Details --------")
@@ -11,16 +11,16 @@ class LibraryItem:
         print("Title: " + self.title)
 
 
-# item1 = LibraryItem(77, "Python for Beginners")
+# item1 = LibraryItem(id=77, title="Python for Beginners")
 # item1.print_info()
 
 
 class Book(LibraryItem):
     def __init__(self, **kwargs):
         print("Initializing Book")
+        self.author = kwargs.pop("author")
+        self.isbn = kwargs.pop("isbn")
         super().__init__(**kwargs)
-        self.author = kwargs["author"]
-        self.isbn = kwargs["isbn"]
 
     def print_info(self):
         super().print_info()
@@ -31,7 +31,7 @@ class Book(LibraryItem):
     def read(self):
         print("I am reading the book \"" + self.title + "\" for you")
 
-# b1 = Book(104, "Data Visualization", "Muller", 123-1234567890)
+# b1 = Book(id=104, title="Data Visualization", author="Muller", isbn="123-1234567890")
 # b1.print_info()
 # b1.read()
 
@@ -39,9 +39,9 @@ class Book(LibraryItem):
 class SoundTrack(LibraryItem):
     def __init__(self, **kwargs):
         print("Initializing SoundTrack")
+        self.singer = kwargs.pop("singer")
+        self.year = kwargs.pop("year")
         super().__init__(**kwargs)
-        self.singer = kwargs["singer"]
-        self.year = kwargs["year"]
 
     def print_info(self):
         super().print_info()
@@ -52,7 +52,7 @@ class SoundTrack(LibraryItem):
     def play(self):
         print("I am playing track \"" + self.title + "\" for you")
 
-# f1 = SoundTrack(9, "Winds of the West", "Westermann", 2007)
+# f1 = SoundTrack(id=9, title="Winds of the West", singer="Westermann", year=2007)
 # f1.print_info()
 # f1.play()
 
@@ -68,3 +68,4 @@ class AudioBook(Book, SoundTrack):
 
 ab1 = AudioBook(54, "Happy Farmer", "Sandy", "333-47538745", "Sally", 2010)
 print(AudioBook.mro())
+
