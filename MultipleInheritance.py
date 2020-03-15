@@ -54,3 +54,6 @@ ab1 = AudioBook(54,
                 "Sally",
                 2010)
 ab1.print_info()
+print(isinstance(ab1, AudioBook))
+print(isinstance(ab1, SoundTrack))
+print(isinstance(ab1, LibraryItem))
