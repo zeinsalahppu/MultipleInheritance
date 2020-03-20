@@ -1,4 +1,4 @@
-# print(__name__)
+print(__name__)
 
 class LibraryItem:
     def __init__(self, **kwargs):
