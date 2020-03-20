@@ -1,7 +1,4 @@
-from LibClass import AudioBook, details
+import LibClass
 
+print(dir(LibClass))
 
-my_audiobook = AudioBook(54, "Happy Farmer", "Sandy", "333-47538745", "Sally", 2010)
-details(my_audiobook)
-
-print(__name__)

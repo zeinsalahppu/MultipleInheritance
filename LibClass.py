@@ -1,5 +1,3 @@
-print(__name__)
-
 class LibraryItem:
     def __init__(self, **kwargs):
         self.id = kwargs.pop("id")
